@@ -2,3 +2,6 @@
 requires = ["setuptools", "wheel", "packaging"]
 build-backend = "setuptools.build_meta"
 
+[tool.cibuildwheel.linux]
+before-all = "yum install -y lapack-devel openblas-devel"
+environment = { DLIB_NO_GUI_SUPPORT="ON", DLIB_USE_CUDA="OFF", DLIB_USE_LAPACK="ON", DLIB_USE_AVX_INSTRUCTIONS="ON" }
